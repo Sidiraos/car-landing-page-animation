@@ -1,0 +1,127 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  font-family: Montserrat, Helvetica, sans-serif;
+  background: #111;
+}
+
+header {
+  min-height: 100vh;
+  background: url("ressources/hero-background.jpg") fixed no-repeat center;
+  /* background-size: cover; */
+  color: #f1f1f1;
+  text-align: center;
+  position: relative;
+}
+div.header-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50% , -50%);
+}
+div.header-title h1 {
+  font-size: clamp(30px , 7vw , 80px);
+  font-weight: 800;
+}
+div.header-title h1 span {
+  font-weight: 200;
+  font-size: clamp(30px , 10vw , 100px);
+}
+div.header-title p {
+  font-weight: 200;
+  font-size: clamp(16px , 3vw , 22px);
+}
+nav {
+  padding-top: 30px;
+}
+nav ul {
+  list-style-type: none;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+div.underLine {
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 1px;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.5;
+}
+.nav-item:hover .underLine {
+  width: 100%;
+  opacity: 1;
+  /* Ajoutez ici les propriétés CSS que vous souhaitez appliquer */
+}
+
+#downBtn {
+  border-radius: 50%;
+  border: 1px solid rgba(240, 240, 240 , 0.3);
+  background: rgba(17,17,17,255);
+  position: absolute;
+  bottom: 5px;
+  padding: 10px 15px;
+}
+#downBtn img {
+  width: 15px;
+}
+main {
+  background-color: rgba(17,17,17,255);
+  color: #f1f1f1;
+  padding: 0 50px;
+}
+section.section1{
+  min-height: 100vh;
+}
+.container {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 50px 110px;
+
+}
+.contactBtn {
+  display: flex;
+  align-items: center;
+}
+.contactBtn span {
+  margin-right: 15px;
+}
+.contactBtn img {
+  width: 14px;
+}
+.section1-box1 , .section1-box2 {
+  margin-top: 40px;
+}
+.section1-box2 {
+  height: 350px;
+}
+.section1-box2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.slide {
+  margin-top: 70px;
+}
+div.slide-img{
+  height: 210px;
+  overflow: hidden;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
