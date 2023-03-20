@@ -31,7 +31,7 @@ div.header-title h1 {
   font-size: clamp(30px , 7vw , 80px);
   font-weight: 800;
 }
-div.header-title h1 span {
+div.header-title h1 span:nth-child(2) {
   font-weight: 200;
   font-size: clamp(30px , 10vw , 100px);
   animation: coursor 900ms ease-in-out infinite;
@@ -88,6 +88,7 @@ div.underLine {
   position: absolute;
   bottom: 5px;
   padding: 10px 15px;
+  opacity: 0;
 }
 #downBtn img {
   width: 15px;
@@ -170,4 +171,23 @@ div.slide-img{
 }
 .slide-text p:nth-child(2){
   font-weight: 200;
+}
+
+/* animation */
+.header-title p {
+  animation: fadeIn 2s ease-in-out;
+}
+#downBtn.visible {
+  opacity: 1;
+  animation: fadeIn 1s ease-in-out;
+
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }

@@ -9,3 +9,8 @@
     <b>V1.2</b>
     <li>add html & css basics design</li>
 </ul>
+<ul>
+    <b>V1.3</b>
+    <li>header improvements</li>
+    <li>add js function typing animation</li>
+</ul>
