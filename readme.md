@@ -14,3 +14,9 @@
     <li>header improvements</li>
     <li>add js function typing animation</li>
 </ul>
+<ul>
+    <b>V1.4</b>
+    <li>header improvements</li>
+    <li>finished header improvement</li>
+    <li>bug correction on header</li>
+</ul>

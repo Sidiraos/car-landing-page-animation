@@ -31,7 +31,7 @@ div.header-title h1 {
   font-size: clamp(30px , 7vw , 80px);
   font-weight: 800;
 }
-div.header-title h1 span:nth-child(2) {
+div.header-title #typingBar {
   font-weight: 200;
   font-size: clamp(30px , 10vw , 100px);
   animation: coursor 900ms ease-in-out infinite;
@@ -52,6 +52,7 @@ div.header-title h1 span:nth-child(2) {
   
 }
 div.header-title p {
+  opacity: 0;
   font-weight: 200;
   font-size: clamp(16px , 3vw , 22px);
 }
@@ -71,7 +72,7 @@ nav ul {
 div.underLine {
   background-color: #f1f1f1;
   width: 30%;
-  height: 1px;
+  height: 0.5px;
   transition: all 0.2s ease-in-out;
   opacity: 0.5;
 }
@@ -87,6 +88,7 @@ div.underLine {
   background: rgba(17,17,17,255);
   position: absolute;
   bottom: 5px;
+  transform: translateX(-50%);
   padding: 10px 15px;
   opacity: 0;
 }
@@ -102,6 +104,10 @@ section.section1{
   min-height: 100vh;
   align-items: center;
   padding-top: 50px;
+  opacity: 0;
+}
+.section.visible {
+  opacity: 1;
 }
 .container {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -174,8 +180,9 @@ div.slide-img{
 }
 
 /* animation */
-.header-title p {
-  animation: fadeIn 2s ease-in-out;
+.header-title p.visible {
+  opacity: 1;
+  animation: fadeIn 1s ease-in-out;
 }
 #downBtn.visible {
   opacity: 1;
