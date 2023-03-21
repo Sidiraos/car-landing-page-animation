@@ -36,3 +36,10 @@
     <li>add customized cursor</li>
     <li>css bug fixed </li>
 </ul>
+
+<ul>
+    <b>V1.8</b>
+    <li>fixed css bug overflowX</li>
+    <li>add Js each child on slide class make an animation</li>
+    <li>css bug fixed slide2 flexDirect and animation revert </li>
+</ul>

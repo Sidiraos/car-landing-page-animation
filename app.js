@@ -52,7 +52,12 @@ observer.observe(section1Box2)
 // slide animation
 const slides = document.querySelectorAll('.slide')
 
-slides.forEach(slide => observer.observe(slide));
+slides.forEach((slide)=>{
+    const children = Array.from(slide.children);
+    console.log(children)
+    children.forEach(child => observer.observe(child))
+    
+});
 
 // custom cursor animation
 const cursor = document.querySelector('#customCursor');

@@ -207,7 +207,13 @@ section.section1{
 
 .slide {
   margin-top: 70px;
+  overflow: hidden;
+}
+.slide > * {
   opacity: 0;
+}
+.slide2 {
+  flex-direction: row-reverse;
 }
 div.slide-img{
   height: 210px;
@@ -248,11 +254,11 @@ div.slide-img{
 }
 
 /* slide animation */
-.slide.visible {
+.slide >.visible{
   opacity: 1;
   animation: fadeIn 500ms ease-in , moveSkew 500ms ease-in-out;
 }
-.slide2.visible {
+.slide2 >.visible {
   animation: fadeIn 500ms ease-in , moveSkewRevert 500ms ease-in-out;
 }
 @keyframes moveSkew {
