@@ -30,3 +30,9 @@
     <b>V1.6</b>
     <li>responsive designed fixed</li>
 </ul>
+<ul>
+    <b>V1.7</b>
+    <li>fixed bug padding bottom container</li>
+    <li>add customized cursor</li>
+    <li>css bug fixed </li>
+</ul>

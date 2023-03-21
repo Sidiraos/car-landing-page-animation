@@ -29,13 +29,8 @@ typingAnimation(text, hero_title , 200);
 const titles = document.querySelectorAll('.title');
 const sectionTitlesP = document.querySelectorAll('.section-title p');
 
-console.log(sectionTitlesP , titles);
-
-
 const triggerAnimation = (entries) => {
     entries.forEach(entry => {
-        console.log(entry.target)
-        console.log(entry.isIntersecting)
         if(entry.isIntersecting){
             triggerFadeIn(entry.target , 100)
         }else {
@@ -59,3 +54,22 @@ const slides = document.querySelectorAll('.slide')
 
 slides.forEach(slide => observer.observe(slide));
 
+// custom cursor animation
+const cursor = document.querySelector('#customCursor');
+window.addEventListener('mousemove' , moveCustomCursor);
+window.addEventListener('scroll' , moveCustomCursor);
+
+function moveCustomCursor(e){
+    posX = e.clientX;
+    posY = e.clientY;
+    // limiter la position du curseur personnalisé à l'intérieur du contenu de la page
+    const content = document.querySelector('body');
+    if(e.clientX + cursor.offsetWidth >= content.offsetWidth) {
+        posX = content.offsetWidth - (cursor.offsetWidth+1);
+    }
+  // Mettre à jour la position du curseur en fonction de la position de défilement de la page
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  cursor.style.top = posY + scrollTop + 'px';
+  cursor.style.left = posX + scrollLeft + 'px';
+}

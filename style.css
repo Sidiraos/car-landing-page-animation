@@ -4,12 +4,36 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  cursor: none;
+
 }
 
+button , a {
+  cursor: none !important;
 
+}
 body {
   font-family: Montserrat, Helvetica, sans-serif;
   background: #111;
+}
+#customCursor{
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #f1f1f1;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#customCursor .childCursor{
+  width: 10px;
+  height: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 
 header {
@@ -105,7 +129,7 @@ main {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0 110px;
-  margin-bottom: 100px;  
+  padding-bottom: 100px;
 
 }
 /* section 1 */
@@ -248,6 +272,7 @@ div.slide-img{
 @media  screen and (max-width: 992px) {
   .container {
     padding: 0 15px;
+    padding-bottom: 50px;
     border: none;
   }
   main {
@@ -258,12 +283,16 @@ div.slide-img{
   .section1-box2 {
     display: none;
   }
-  .section1{
+  section.section1{
     min-height: auto;
+    margin-bottom: 20px;
   }
   .section1-box1 {
     height: auto;
     margin-top: 10px;
+  }
+  .section2{
+    margin-top: 20px;
   }
 }
 @media  screen and (max-width: 576px) {
@@ -275,6 +304,9 @@ div.slide-img{
   }
 }
 @media screen and (max-width:407px){
+  nav {
+    margin-bottom: 30px;
+  }
   .nav-item {
     margin-right: 110px;
     margin-top: 10px;
