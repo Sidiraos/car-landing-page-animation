@@ -95,19 +95,11 @@ div.underLine {
 #downBtn img {
   width: 15px;
 }
+/* main & container*/
 main {
   background-color: rgba(17,17,17,255);
   color: #f1f1f1;
   padding: 0 100px;
-}
-section.section1{
-  min-height: 100vh;
-  align-items: center;
-  padding-top: 50px;
-  opacity: 0;
-}
-.section.visible {
-  opacity: 1;
 }
 .container {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -115,6 +107,39 @@ section.section1{
   padding: 0 110px;
   padding-bottom: 100px;
 
+}
+/* section 1 */
+section.section1{
+  min-height: 100vh;
+  align-items: center;
+  padding-top: 50px;
+}
+.title , .title + p
+ {
+  opacity: 0;
+}
+.title.visible {
+  opacity: 1;
+  animation: fadeIn 2s ease-out;
+}
+.title + p.visible{
+  opacity: 1;
+  animation: fadeIn 1s ease-in-out ,  movedown 1s ease-out ;
+}
+@keyframes movedown {
+  from{
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.title {
+  font-size: clamp(10px , 5vw ,60px );
+  font-weight: 200;
+}
+.section1-title span {
+  font-weight: 800;
 }
 .contactBtn {
   display: flex;
@@ -130,7 +155,11 @@ section.section1{
   height: 400px;
   overflow: hidden;
   margin-top: auto;
-
+  opacity: 0;
+}
+.section1-box1.visible , .section1-box2.visible {
+  opacity: 1;
+  animation: fadeIn 3s ease-out;
 }
 
 .section1-box1 p:nth-child(1){
@@ -150,16 +179,11 @@ section.section1{
   object-fit: cover;
   object-position: center;
 }
-.title {
-  font-size: clamp(10px , 5vw ,60px );
-  font-weight: 200;
-}
-.section1-title span {
-  font-weight: 800;
-}
+
 
 .slide {
   margin-top: 70px;
+  opacity: 0;
 }
 div.slide-img{
   height: 210px;
@@ -187,8 +211,8 @@ div.slide-img{
 #downBtn.visible {
   opacity: 1;
   animation: fadeIn 1s ease-in-out;
-
 }
+
 
 @keyframes fadeIn {
   0%{
@@ -197,4 +221,25 @@ div.slide-img{
   100%{
     opacity: 1;
   }
+}
+
+/* slide animation */
+.slide.visible {
+  opacity: 1;
+  animation: fadeIn 500ms ease-in , moveSkew 500ms ease-in-out;
+}
+.slide2.visible {
+  animation: fadeIn 500ms ease-in , moveSkewRevert 500ms ease-in-out;
+}
+@keyframes moveSkew {
+  from {
+    transform: skewX(-20deg);
+  }
+  to {
+    transform: skewX(0);
+  }
+}
+@keyframes moveSkewRevert {
+  from{transform: skewX(20deg)}
+  to {transform: skewX(0);}
 }

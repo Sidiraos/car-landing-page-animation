@@ -20,3 +20,9 @@
     <li>finished header improvement</li>
     <li>bug correction on header</li>
 </ul>
+<ul>
+    <b>V1.5</b>
+    <li>section animation improvements</li>
+    <li>slide animation improvement</li>
+    <li>bug correction</li>
+</ul>

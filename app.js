@@ -1,11 +1,13 @@
 const hero_title = document.querySelector('#hero_title');
 const downBtn = document.querySelector('#downBtn');
 
-setTimeout(() => downBtn.classList.add('visible') , 1500);
 triggerFadeIn(downBtn , 1500)
 triggerFadeIn(document.querySelector('.header-title p'), 1000)
 function triggerFadeIn(el , time){
     setTimeout(()=> el.classList.add('visible'), time)
+}
+function triggerFadeOut(el , time) {
+    setTimeout(()=> el.classList.remove('visible'), time)
 }
 let i = 0;
 let opacity = 0;
@@ -22,3 +24,38 @@ function typingAnimation(text , el , speed){
 let text = "PORSCHE , SET FREE.";
 
 typingAnimation(text, hero_title , 200);
+
+// second page of animation
+const titles = document.querySelectorAll('.title');
+const sectionTitlesP = document.querySelectorAll('.section-title p');
+
+console.log(sectionTitlesP , titles);
+
+
+const triggerAnimation = (entries) => {
+    entries.forEach(entry => {
+        console.log(entry.target)
+        console.log(entry.isIntersecting)
+        if(entry.isIntersecting){
+            triggerFadeIn(entry.target , 100)
+        }else {
+            triggerFadeOut(entry.target , 100)
+        }
+    }, {thereshold: 1})
+}
+
+const observer = new IntersectionObserver(triggerAnimation )
+titles.forEach(title => observer.observe(title))
+sectionTitlesP.forEach(titleP => observer.observe(titleP))
+
+const section1Box1 = document.querySelector('.section1-box1')
+const section1Box2 = document.querySelector('.section1-box2')
+
+observer.observe(section1Box1)
+observer.observe(section1Box2)
+
+// slide animation
+const slides = document.querySelectorAll('.slide')
+
+slides.forEach(slide => observer.observe(slide));
+
