@@ -26,3 +26,7 @@
     <li>slide animation improvement</li>
     <li>bug correction</li>
 </ul>
+<ul>
+    <b>V1.6</b>
+    <li>responsive designed fixed</li>
+</ul>
