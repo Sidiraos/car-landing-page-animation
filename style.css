@@ -4,11 +4,15 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+
+}
+html {
   cursor: none;
 
 }
 
-button , a {
+button , a , input , select, textarea{
   cursor: none !important;
 
 }
@@ -19,6 +23,7 @@ body {
 #customCursor{
   position: absolute;
   top: 0;
+  transform: translate(0,0);
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -27,19 +32,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
-#customCursor .childCursor{
+#customCursor::after{
+  content: "";
+  display: block;
   width: 10px;
   height: 10px;
   background-color: #f1f1f1;
   border: 1px solid black;
   border-radius: 50%;
 }
+@media (pointer:coarse){
+  #customCursor{
+    display: none;
+  }
+}
 
 header {
   min-height: 100vh;
   background: url("ressources/hero-background.jpg") fixed no-repeat center;
-  /* background-size: cover; */
+  background-size: cover;
   color: #f1f1f1;
   text-align: center;
   position: relative;
@@ -94,16 +107,16 @@ nav ul {
 }
 
 div.underLine {
-  background-color: #f1f1f1;
-  width: 30%;
+  background-color: #a3a0a0;
+  width: 100%;
   height: 0.5px;
-  transition: all 0.2s ease-in-out;
-  opacity: 0.5;
+  transition: transform 0.2s ease-in-out;
+  transform: scaleX(30%);
+  transform-origin: left;
 }
 .nav-item:hover .underLine {
-  width: 100%;
-  opacity: 1;
-  /* Ajoutez ici les propriétés CSS que vous souhaitez appliquer */
+  background-color: white;
+  transform: scaleX(100%);
 }
 
 #downBtn {
@@ -111,7 +124,7 @@ div.underLine {
   border: 1px solid rgba(240, 240, 240 , 0.3);
   background: rgba(17,17,17,255);
   position: absolute;
-  bottom: 5px;
+  bottom: clamp(13px , 5vh , 20px);
   transform: translateX(-50%);
   padding: 10px 15px;
   opacity: 0;
@@ -130,18 +143,22 @@ main {
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0 110px;
   padding-bottom: 100px;
+  overflow-x: hidden;
 
 }
 /* section 1 */
 section.section1{
-  min-height: 100vh;
+  height: fit-content;
+  /* max-height: 900px; */
   align-items: center;
   padding-top: 50px;
+  margin-bottom: 12px;
 }
 .title , .title + p
  {
   opacity: 0;
 }
+/* animation */
 .title.visible {
   opacity: 1;
   animation: fadeIn 2s ease-out;
@@ -176,9 +193,10 @@ section.section1{
   width: 14px;
 }
 .section1-box1 , .section1-box2 {
-  height: 400px;
   overflow: hidden;
-  margin-top: auto;
+  align-self: flex-start;
+  margin-top: 100px;
+  height: 400px;
 }
 .section1-box2 {
   opacity: 0;
@@ -186,6 +204,7 @@ section.section1{
 .section1-box1 >* {
   opacity: 0;
 }
+/* animation */
 .section1-box2.visible {
   opacity: 1;
   animation: fadeIn 3s ease-out;
@@ -202,6 +221,8 @@ section.section1{
   font-weight: 200;
   margin-top: 30px;
   padding-right: 10px;
+  font-size: clamp(10px,5vw,18px);
+  line-height: 1.4;
 }
 .section1-box1 button {
   margin-top: 40px;
@@ -220,8 +241,13 @@ section.section1{
 }
 .slide > * {
   opacity: 0;
+  transform: skewX(20deg);
 }
-.slide2 {
+.slide:nth-child(even) > *{
+  transform: skewX(-20deg);
+
+}
+.slide:nth-child(even) {
   flex-direction: row-reverse;
 }
 div.slide-img{
@@ -232,11 +258,18 @@ div.slide-img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 0 80%;
+}
+.slide1 img {
   object-position: center;
 }
 .slide-text{
   overflow: hidden;
   height: 210px;
+}
+.slide-text p {
+  line-height: 1.4;
+
 }
 .slide-text p:nth-child(2){
   font-weight: 200;
@@ -265,9 +298,10 @@ div.slide-img{
 /* slide animation */
 .slide >.visible{
   opacity: 1;
+  transform: skewX(0deg);
   animation: fadeIn 500ms ease-in , moveSkew 500ms ease-in-out;
 }
-.slide2 >.visible {
+.slide:nth-child(even) >.visible {
   animation: fadeIn 500ms ease-in , moveSkewRevert 500ms ease-in-out;
 }
 @keyframes moveSkew {
@@ -294,13 +328,15 @@ div.slide-img{
     padding: 0;
   }
 }
-@media  screen and (max-width: 768px) {
+@media  screen and (max-width: 767px) {
   .section1-box2 {
     display: none;
   }
   section.section1{
     min-height: auto;
     margin-bottom: 20px;
+    height: fit-content;
+
   }
   .section1-box1 {
     height: auto;
@@ -309,6 +345,10 @@ div.slide-img{
   .section2{
     margin-top: 20px;
   }
+  .section1-box1 p:nth-child(2) {
+    padding-left: 10px;
+}
+  
 }
 @media  screen and (max-width: 576px) {
   .slide {

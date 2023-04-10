@@ -15,6 +15,7 @@ let opacity = 0;
 function typingAnimation(text , el , speed){
     // opacity animation for increase opacity depending on text lenght
     // i + 21 for giving opacity visible no 0 because i start by 0
+    // we can do a background clip : text & give it a linear background to right from the css but i prefer like this
     opacity = (i+21)/(text.length+20)
     el.innerHTML += `<span style = "color : rgba(255, 255, 255, ${opacity})">${text.charAt(i)}</span>`;
     i++;
@@ -23,7 +24,9 @@ function typingAnimation(text , el , speed){
 }
 let text = "PORSCHE , SET FREE.";
 
-typingAnimation(text, hero_title , 200);
+setTimeout(()=>{
+    typingAnimation(text, hero_title , 200);
+}, 500);
 
 // second page of animation
 const titles = document.querySelectorAll('.title');
@@ -36,7 +39,7 @@ const triggerAnimation = (entries) => {
         }else {
             removeAnimationClass(entry.target , 100)
         }
-    }, {thereshold: 1})
+    }, {rootMargin: "-20%"})
 }
 
 const observer = new IntersectionObserver(triggerAnimation)
@@ -61,19 +64,31 @@ slides.forEach((slide)=>{
 // custom cursor animation
 const cursor = document.querySelector('#customCursor');
 window.addEventListener('mousemove' , moveCustomCursor);
-window.addEventListener('scroll' , moveCustomCursor);
+// window.addEventListener('scroll' , moveCustomCursor);
 
 function moveCustomCursor(e){
     posX = e.clientX;
     posY = e.clientY;
     // limiter la position du curseur personnalisé à l'intérieur du contenu de la page
     const content = document.querySelector('body');
-    if(e.clientX + cursor.offsetWidth >= content.offsetWidth) {
-        posX = content.offsetWidth - (cursor.offsetWidth+1);
+    if(e.clientX + (cursor.offsetWidth /2) >= content.offsetWidth) {
+        posX = content.offsetWidth - ((cursor.offsetWidth/2)+1);
     }
   // Mettre à jour la position du curseur en fonction de la position de défilement de la page
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  cursor.style.top = posY + scrollTop + 'px';
-  cursor.style.left = posX + scrollLeft + 'px';
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    cursor.style.left = posX - (cursor.offsetWidth / 2) + scrollLeft + 'px';
+    cursor.style.top = posY - (cursor.offsetHeight / 2) + scrollTop + 'px';
+    // cursor.style.transform = `translate(calc(${posX + scrollLeft}px - 50%) , calc(${posY + scrollTop}px - 50%))` ;
+}
+
+// push downBtn
+
+downBtn.addEventListener('click', slideDown)
+function slideDown(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top : document.querySelector(`${e.target.getAttribute('href')}`).offsetTop,
+        behavior : "smooth"
+    })
 }
