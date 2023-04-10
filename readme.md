@@ -43,3 +43,7 @@
     <li>add Js each child on slide class make an animation</li>
     <li>css bug fixed slide2 flexDirect and animation revert </li>
 </ul>
+<ul>
+    <b>V1.9</b>
+    <li>css and js bug fixed</li>
+</ul>

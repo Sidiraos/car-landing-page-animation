@@ -1,12 +1,12 @@
 const hero_title = document.querySelector('#hero_title');
 const downBtn = document.querySelector('#downBtn');
 
-triggerFadeIn(downBtn , 1500)
-triggerFadeIn(document.querySelector('.header-title p'), 1000)
-function triggerFadeIn(el , time){
+addAnimationClass(downBtn , 1500)
+addAnimationClass(document.querySelector('.header-title p'), 1000)
+function addAnimationClass(el , time){
     setTimeout(()=> el.classList.add('visible'), time)
 }
-function triggerFadeOut(el , time) {
+function removeAnimationClass(el , time) {
     setTimeout(()=> el.classList.remove('visible'), time)
 }
 let i = 0;
@@ -32,21 +32,20 @@ const sectionTitlesP = document.querySelectorAll('.section-title p');
 const triggerAnimation = (entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
-            triggerFadeIn(entry.target , 100)
+            addAnimationClass(entry.target , 100)
         }else {
-            triggerFadeOut(entry.target , 100)
+            removeAnimationClass(entry.target , 100)
         }
     }, {thereshold: 1})
 }
 
-const observer = new IntersectionObserver(triggerAnimation )
+const observer = new IntersectionObserver(triggerAnimation)
 titles.forEach(title => observer.observe(title))
 sectionTitlesP.forEach(titleP => observer.observe(titleP))
 
-const section1Box1 = document.querySelector('.section1-box1')
+const childsSection1Box1 = document.querySelectorAll('.section1-box1 >*')
 const section1Box2 = document.querySelector('.section1-box2')
-
-observer.observe(section1Box1)
+childsSection1Box1.forEach(child => observer.observe(child))
 observer.observe(section1Box2)
 
 // slide animation
